@@ -1,0 +1,136 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/preztel/AzureLibrary/master/uilib.lua", true))()
+
+local AutoTab = Library:CreateTab(" Main GUI","things", true)
+local teleports = Library:CreateTab("Teleports Win Race","things", true)
+local teleport = Library:CreateTab("Teleports Other Map","things", true)
+local tp = Library:CreateTab("Teleports Eggs","things", true)
+
+
+
+AutoTab:CreateToggle("auto collect", function(arg) --the (arg) is if the checkbox is toggled or not
+    if arg then
+        _G.c = true 
+        while wait(0) and _G.c do
+           local args = {
+    [1] = "collectOrb",
+    [2] = "Orange Orb",
+    [6] = "City"
+}
+
+game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer(unpack(args))
+
+local args = {
+    [1] = "collectOrb",
+    [2] = "Red Orb",
+    [3] = "City"
+}
+
+game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer(unpack(args))
+
+local args = {
+    [1] = "collectOrb",
+    [2] = "Gem",
+    [3] = "City"
+}
+
+game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer(unpack(args))
+
+local args = {
+    [1] = "collectOrb",
+    [2] = "Blue Orb",
+    [3] = "City"
+}
+
+game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer(unpack(args))
+
+local args = {
+    [1] = "collectOrb",
+    [2] = "Orange Orb",
+    [3] = "City"
+}
+
+game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer(unpack(args))
+        end
+    else
+        _G.c = false
+    end
+end)
+
+    AutoTab:CreateToggle("auto Rebirth", function(arg) --the (arg) is if the checkbox is toggled or not
+    if arg then
+        _G.c = true 
+        while wait(0) and _G.c do
+           local args = {
+    [1] = "rebirthRequest"
+}
+
+game:GetService("ReplicatedStorage").rEvents.rebirthEvent:FireServer(unpack(args))
+end
+    else
+        _G.c = false
+    end
+end)
+
+teleports:CreateButton("Win grass", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(1636, 1, -5961)
+end)
+
+teleports:CreateButton("Win lava", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(-5, 1, -8709)
+end)
+
+teleports:CreateButton("Win Desert", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(946, 1, -11019)
+end)
+
+teleport:CreateButton("City", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(-545, 4, 209)
+end)
+
+teleport:CreateButton("Snow City", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(-491, 18, 2512)
+end)
+
+teleport:CreateButton("Lava City", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(2083, 76, 4401)
+end)
+
+teleport:CreateButton("Highway City", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(4033, 73, 5590)
+end)
+
+tp:CreateButton("Blue 600", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(-590, 4, 491)
+end)
+
+tp:CreateButton("Purple 1k", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(-435, 4, 208)
+end)
+
+tp:CreateButton("Lightning 2,5k", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(383, 65, 18)
+end)
+
+tp:CreateButton("Snow 4k", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(-350, 4, 2250)
+end)
+
+tp:CreateButton("Inferno 8k", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(1742, 4, 4034)
+end)
+
+tp:CreateButton("Lava 8k", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(2228, 4, 4427)
+end)
+
+tp:CreateButton("Electro Legend 100k", function() --you dont need "arg" for a button
+game.Players.LocalPlayer.character.HumanoidRootPart.CFrame = CFrame.new(4536, 75, 6406)
+end)
+
+--| Anti AFK | By Altix#3395
+    local Virtual = game:service'VirtualUser'
+    game:service'Players'.LocalPlayer.Idled:connect(function()
+        Virtual:CaptureController()
+        Virtual:ClickButton2(Vector2.new())
+        wait(2)
+    end)
